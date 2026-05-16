@@ -1,16 +1,21 @@
 import dotenv from "dotenv";
-
 dotenv.config();
+
 import express from "express";
-import helmet from "helmet"; 
-import rateLimit from "express-rate-limit"; 
-import cors from "cors" ;
-import  compression from "compression";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
+import cors from "cors";
+import compression from "compression";
 import morgan from "morgan";
-import xss  from "xss-clean";
 import hpp from "hpp";
 
 const app = express();
+
+/* =========================
+   TRUST PROXY
+========================= */
+
+app.set("trust proxy", 1);
 
 /* =========================
    BASIC SECURITY
@@ -27,7 +32,7 @@ app.use(
 
 app.use(
   cors({
-    origin: "*", // change to your frontend domain in production
+    origin: "*", // replace with frontend domain in production
     methods: ["GET"],
   })
 );
@@ -38,36 +43,32 @@ app.use(compression());
 
 app.use(morgan("combined"));
 
-app.use(xss());
-
 app.use(hpp());
 
 /* =========================
-   RATE LIMITING
-   1 REQUEST / MINUTE
+   RATE LIMITER
 ========================= */
 
-const strictLimiter = rateLimit({
+const apiLimiter = rateLimit({
   windowMs: 60 * 1000, // 1 minute
-  max: 3,
+  max: 60, // 60 requests/minute
   standardHeaders: true,
   legacyHeaders: false,
+
   message: {
     success: false,
-    message: "Too many requests. Please wait 1 minute.",
+    message: "Too many requests. Please try again later.",
   },
 });
 
-app.use("/api/", strictLimiter);
+app.use("/api", apiLimiter);
 
 /* =========================
-   IN-MEMORY DATA
-   (Replace with DB later)
+   STATIC DATA
 ========================= */
 
 const announcementData = {
-  image:
-    "https://yourcdn.com/banner.jpg",
+  image: "https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg",
 
   title: "New Update Available",
 
@@ -81,10 +82,12 @@ const announcementData = {
 };
 
 const versionData = {
-  latestVersion: "1.1.4",
+  latestVersion: "1.1.3",
 
   updateUrl:
     "https://play.google.com/store/apps/details?id=com.aktubrand",
+
+  isAnnouncement: true,
 };
 
 /* =========================
@@ -95,13 +98,11 @@ const versionData = {
 app.get("/", (req, res) => {
   return res.status(200).json({
     success: true,
-    message: "API is running securely",
+    message: "API is running",
   });
 });
 
-/*
-  GET ANNOUNCEMENT API
-*/
+// Announcement API
 app.get("/api/message", (req, res) => {
   return res.status(200).json({
     success: true,
@@ -109,11 +110,12 @@ app.get("/api/message", (req, res) => {
   });
 });
 
-/*
-  GET VERSION API
-*/
+// Version API
 app.get("/api/version", (req, res) => {
-  return res.status(200).json(versionData,{
+    console.log("hiiii")
+  return res.status(200).json({
+    success: true,
+    data: versionData,
     isAnnouncement:false,
   });
 });
@@ -146,8 +148,8 @@ app.use((err, req, res, next) => {
    START SERVER
 ========================= */
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
-  console.log(`Secure server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
