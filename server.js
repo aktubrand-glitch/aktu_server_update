@@ -82,7 +82,7 @@ const announcementData = {
 };
 
 const versionData = {
-  latestVersion: "1.1.3",
+  latestVersion: "1.1.4",
 
   updateUrl:
     "https://play.google.com/store/apps/details?id=com.aktubrand",
