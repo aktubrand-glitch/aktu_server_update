@@ -87,7 +87,7 @@ const versionData = {
   updateUrl:
     "https://play.google.com/store/apps/details?id=com.aktubrand",
 
-  isAnnouncement: true,
+  isAnnouncement: false,
 };
 
 /* =========================
