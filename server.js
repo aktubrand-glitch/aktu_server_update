@@ -70,14 +70,14 @@ app.use("/api", apiLimiter);
 const announcementData = {
   image: "https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg",
 
-  title: "New Update Available",
+  title: "Enjoying AKTU Brand?",
 
   text:
-    "We added faster performance and bug fixes. Update now for the best experience.",
+    "Leave a quick review and share the app with your friends.",
 
   action: {
     link:
-      "https://play.google.com/store/apps/details?id=com.aktubrand",
+      "https://play.google.com/store/apps/details?id=com.aktubrand&reviewId=0&hl=en",
   },
 };
 
@@ -87,7 +87,7 @@ const versionData = {
   updateUrl:
     "https://play.google.com/store/apps/details?id=com.aktubrand",
 
-  isAnnouncement: false,
+  isAnnouncement: true,
 };
 
 /* =========================
