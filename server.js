@@ -68,7 +68,7 @@ app.use("/api", apiLimiter);
 ========================= */
 
 const announcementData = {
-  image: "https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg",
+  image: "https://blogger.googleusercontent.com/img/a/AVvXsEjPteO7TfQ3xJcPBqcwC6LeUPCx8-WJLdg0gxxR8_4276AO9IhDNiVst-Z0p14EKACnOnZjH4XbQv6fsDZL2CuyEOIxGRX0BdIXYKyjZ8A3eVix0fNu3Y_9eH7lSyiKySwTes1EXC-FdV9b9YoJO0YQt1geAji-_tjcwFiWwMGkm-1g1laQ641ZJm_xBvg",
 
   title: "Enjoying AKTU Brand?",
 
