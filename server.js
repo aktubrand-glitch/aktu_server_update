@@ -68,16 +68,16 @@ app.use("/api", apiLimiter);
 ========================= */
 
 const announcementData = {
-  image: "https://blogger.googleusercontent.com/img/a/AVvXsEjPteO7TfQ3xJcPBqcwC6LeUPCx8-WJLdg0gxxR8_4276AO9IhDNiVst-Z0p14EKACnOnZjH4XbQv6fsDZL2CuyEOIxGRX0BdIXYKyjZ8A3eVix0fNu3Y_9eH7lSyiKySwTes1EXC-FdV9b9YoJO0YQt1geAji-_tjcwFiWwMGkm-1g1laQ641ZJm_xBvg",
+  image: "https://blogger.googleusercontent.com/img/a/AVvXsEjpcMlpi8R67bIv7SkI7eVZWNV5y6QeIkZDkWwIq8tx6go2KIMniMHHwbZJE9IOgI0HjfxwRloNao_3Rmu45GeaBPnE7PEs6PJQGHD_e-NUb0mtwCzhOU0Io8WUzwNfcMEGzLhNEqHulfvu3D2vJfiN3a8n0UkMBtASi3VA1p7KNDvNz2YrjsyXybTU71g",
 
-  title: "Enjoying AKTU Brand?",
+  title: "Your Free AKTU Study Hub.",
 
   text:
-    "Leave a quick review and share the app with your friends.",
+    "Notes, PYQs, syllabus and exam resources — completely free.",
 
   action: {
     link:
-      "https://play.google.com/store/apps/details?id=com.aktubrand&reviewId=0&hl=en",
+      "https://study.aktubrand.online",
   },
 };
 
